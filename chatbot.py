@@ -1,13 +1,25 @@
 print('Welcome to the chatbot!')
 print('Type "exit" or press "X" to end the conversation.\n')
 
+messages = []
+def add_message(role, content):
+    messages.append({'role': role, 'content': content})
+
+def generate_response():
+    # This function would typically generate a response based on the messages.
+    # For demonstration, we'll just return a placeholder response.
+    return "This is a placeholder response."
+
 while True: 
   user_input = input('You: ')
 
   if user_input.lower() in ['exit', 'x']:
-    print('Chatbot: Goodbye!')
+    print('Chatbot: Goodbye!\n')
     break
   
-  # Here you would typically process the user input and generate a response.
-  # For demonstration, we'll just echo the input.
-  print(f'Chatbot: You said "{user_input}"')
+  add_message('user', user_input)
+  response = generate_response()
+  add_message('assistant', response)
+  print(f'ChatBot: {response}')
+
+print(f'Messages: {messages}\n')
